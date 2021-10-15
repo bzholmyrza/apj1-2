@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Of All Books</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" name="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="https://astanait.edu.kz/">
+            <img height="100px" width="300px" src="https://moodle.astanait.edu.kz/pluginfile.php/1/core_admin/logo/0x150/1613448995/Astana%20IT%20University%20%284%29.png" alt="AITU">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.jsp">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users">View Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/books">View Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/new">Registration</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--
+        <th scope="row">#</th>
+        <td><a th:href="@{/books/{isbn} (isbn=${book.getIsbn()})}" th:text="${book.getIsbn()}"></a></td>
+        <td th:text="${book.getName()}"></td>
+        <td th:text="${book.getAuthor()}"></td>
+        <td th:text="${book.getCountOfCopies()}"></td>
+        <td th:text="${book.getUrl()}">-</td>
+    </tr>
+    </tbody>
+</table>-->
+<div class="container" th:each="book : ${books}">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <header class="card-header">
+                    <a href="#" class="float-right btn btn-outline-primary mt-1">Take</a>
+                    <h4 class="card-title mt-2"  th:text="${book.getName()}"></h4>
+                </header>
+                <article class="card-body row">
+                    <div class="col-md-3">
+                        <img width="200" height="250" th:src="${book.getUrl()}">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <p><b>ISBN: </b><a th:href="@{/books/{isbn} (isbn=${book.getIsbn()})}" th:text="${book.getIsbn()}"></a></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <b>Name: </b><p th:text="${book.getName()}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <b>AUTHOR: </b><p th:text="${book.getAuthor()}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <b>Available number: </b><p th:text="${book.getCountOfCopies()}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" name="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+<body>
+<p th:text="${user.getFullName()}">NAME</p>
+<p th:text="${user.getId()}">ID</p>
+<p th:text="${user.getEmail()}">EMAIL</p>
+<p th:text="${user.getRole()}">AGE</p>
+<a th:href="@{/users/{id}/edit(id=${user.getId()})}">EDIT</a>
+<form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}" >
+    <input type="submit" value="DELETE!">
+</form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" name="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+<body>
+<p th:text="${book.getIsbn()}">isbn</p>
+<p th:text="${book.getName()}">NAME</p>
+<p th:text="${book.getAuthor()}">author</p>
+<p th:text="${book.getUrl()}">url</p>
+<p th:text="${book.getCountOfCopies()}">countOfCopies</p>
+<a th:href="@{/books/{isbn}/edit(isbn=${book.getIsbn()})}">EDIT</a>
+<form th:method="DELETE" th:action="@{/books/{isbn}(isbn=${book.getIsbn()})}" >
+    <input type="submit" value="DELETE!">
+</form>
+</body>
+</html>

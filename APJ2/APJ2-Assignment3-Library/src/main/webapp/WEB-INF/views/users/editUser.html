@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User Info</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" name="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <header class="card-header">
+                    <a href="login.jsp" class="float-right btn btn-outline-primary mt-1">Log in</a>
+                    <h4 class="card-title mt-2">Sign up</h4>
+                </header>
+                <article class="card-body">
+                    <form  th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <div style="color: red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">name Error</div>
+                                <label for="fullName">Full Name</label>
+                                <input type="text" th:field="*{fullName}" id="fullName" class="form-control" name="fullName" placeholder="Enter your full name"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</div>
+                            <label for="email">Email</label>
+                            <input th:field="*{email}" type="email" class="form-control" id="email" name="email" placeholder="Enter your email" />
+                            <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">age Error</div>
+                            <label for="password">Password</label>
+                            <input th:field="*{password}" class="form-control" type="password" placeholder="Create your password" name="password" id="password">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </div>
+                    </form>
+                </article>
+                <div class="border-top card-body text-center">Have an account? <a href="login.jsp">Log In</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
